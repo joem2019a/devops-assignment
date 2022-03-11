@@ -1,0 +1,5 @@
+flask
+pydash
+sqlalchemy
+python-dotenv
+flask_cors
