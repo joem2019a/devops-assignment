@@ -18,6 +18,7 @@ class Asset(*Base):
   asset_type = relationship('AssetType', back_populates='assets')
   user = relationship('User', back_populates='assets')
 
-  def __init__(self, asset_type, user):
+
+  def __init__(self, asset_type):
     self.asset_type = asset_type
-    self.user = user
+
