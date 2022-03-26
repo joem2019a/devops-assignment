@@ -1,10 +1,7 @@
 from pydash import map_, filter_
-from sqlalchemy import MetaData
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import class_mapper
 
-metadata=MetaData()
-BaseModel=declarative_base(metadata=metadata)
+from api.middleware import db
 
 
 def load_join_data(data, nested_relationships={}):
@@ -40,7 +37,7 @@ class ModelUtils:
     ])
     return result
 
-Base = [BaseModel, ModelUtils]
+Base = [db.Model, ModelUtils]
 
 from .user import User
 from .asset import Asset

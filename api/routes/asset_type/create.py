@@ -1,18 +1,17 @@
 import flask
 
 from .. import routes
-from api.services.db import with_db
+from api.middleware import db
 from api.models import AssetType
 
 
 @routes.route('/asset-type', methods=['POST'])
-@with_db
-def create_asset_type(conn=None):
+def create_asset_type():
   body = flask.request.get_json()
 
   asset_type = AssetType(body['name'], body['description'], body['cost'])
   
-  conn.add(asset_type)
-  conn.commit()
+  db.session.add(asset_type)
+  db.session.commit()
 
   return asset_type.to_dict()

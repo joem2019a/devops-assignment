@@ -1,7 +1,11 @@
 from flask import Blueprint
 routes = Blueprint('routes', __name__)
 
-from .user.create import *
+from .auth.login import *
+from .auth.logout import *
+from .auth.refresh import *
+from .auth.register import *
+
 from .user.read import *
 from .user.update import *
 from .user.delete import *

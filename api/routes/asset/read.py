@@ -1,8 +1,8 @@
 from pydash import map_
-from json import dumps
+from flask import jsonify
 
 from .. import routes
-from api.services.db import with_db
+from api.middleware import db
 from api.models import Asset, User
 
 
@@ -10,13 +10,12 @@ user_id = 1 # todo - get this from auth
 
 
 @routes.route('/assets', methods=['GET'])
-@with_db
-def read_assets(conn=None):
+def read_assets():
 
-  user = conn.get(User, user_id)
-  assets = conn.query(Asset).all() if user.is_admin == True else conn.query(Asset).where(Asset.user_id == user_id).all()
+  user = db.session.get(User, user_id)
+  assets = db.session.query(Asset).all() if user.is_admin == True else db.session.query(Asset).where(Asset.user_id == user_id).all()
 
-  return dumps(map_(
+  return jsonify(map_(
     assets,
     lambda x: {
       **x.to_dict(),
@@ -27,9 +26,8 @@ def read_assets(conn=None):
 
 
 @routes.route('/asset/<asset_id>', methods=['GET'])
-@with_db
-def read_asset(asset_id, conn=None):
-  asset = conn.get(Asset, asset_id)
+def read_asset(asset_id):
+  asset = db.session.get(Asset, asset_id)
 
   if asset.user is not None and (asset.user.user_id != user_id or asset.user.is_admin != True):
     raise Exception()

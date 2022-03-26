@@ -1,5 +1,7 @@
 flask
 pydash
-sqlalchemy
 python-dotenv
 flask_cors
+flask-praetorian
+pendulum
+Flask-SQLAlchemy

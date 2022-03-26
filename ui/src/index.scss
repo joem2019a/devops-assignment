@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  code {
+    user-select: auto;
+  }
+
+  user-select: none;
+
+  * {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    color: white;
+  }
+}
+
+$theme-colors: (
+  'primary': #ffffff,
+  'secondary': #0070c0,
+  'success': #35df91,
+  'danger': #f47960,
+  'warning': #fac762,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';

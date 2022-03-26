@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+
+  margin: 2em;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  
+  * {
+    text-align: center;
+  }
+}
+
+.homeSection {
+  width: 100%;
+  margin: 2em;
+
+  h2 {
+    margin: 0;
+  }
+
+  & > *:first-child {
+    margin-bottom: 5vh;
+  }
+}
+
+.requestsTitle {
+  display: flex;
+  flex-direction: row;
+
+  & > h2:first-child {
+    margin-bottom: 0;
+    margin-right: .5em;
+  }
+}
+
+
