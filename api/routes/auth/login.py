@@ -1,4 +1,5 @@
-from flask import request, jsonify
+from flask import request
+from flask_praetorian import PraetorianError
 
 from .. import routes
 from api.middleware import auth
@@ -8,6 +9,15 @@ from api.middleware import auth
 def login():
   body = request.get_json()
 
-  user = guard.authenticate(body['username'], body['password'])
+  user = auth.authenticate(body['username'], body['password'])
 
-  return flask.jsonify(access_token=guard.encode_jwt_token(user))
+  if not user.is_active:
+    raise PraetorianError('Unauthorised.')
+
+  return {
+    'access_token': auth.encode_jwt_token(
+      user,
+      username=user.username,
+      email=user.email,
+    )
+  }

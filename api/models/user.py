@@ -4,7 +4,6 @@ from sqlalchemy import (
   String,
   Text,
   Boolean,
-  ForeignKey
 )
 from sqlalchemy.orm import relationship
 
@@ -16,7 +15,7 @@ class User(*Base):
 
   user_id = Column('user_id', Integer, primary_key=True)
   username = Column('username', String(10), nullable=False)
-  hashed_password = Column('hashed_password', Text, nullable=False) # (hashed password)
+  hashed_password = Column('hashed_password', Text, nullable=False)
   name = Column('name', String(100), nullable=False)
   email = Column('email', String(100), nullable=False)
   is_admin = Column('is_admin', Boolean, nullable=False, default=False)
@@ -31,7 +30,13 @@ class User(*Base):
 
   @property
   def rolenames(self):
-    return [] if self.is_admin == False else ['admin']
+
+    roles = []
+
+    if self.is_admin == True: roles.append('admin')
+    if self.is_enabled == True: roles.append('active_user')
+
+    return roles
 
   @property
   def password(self):

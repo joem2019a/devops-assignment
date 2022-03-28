@@ -1,25 +1,21 @@
-import flask
+from flask import request
+from flask_praetorian import roles_required
+from pydash import omit
 
 from .. import routes
 from api.middleware import db
 from api.models import User
 
 
-requesting_user_id = 1 # todo: get this from auth
-
-
 @routes.route('/user/<user_id>/admin', methods=['POST'])
+@roles_required('active_user', 'admin')
 def change_user_admin_status(user_id):
-
-  requesting_user = db.session.get(User, requesting_user_id)
-  if requesting_user.is_admin != True: raise Exception()
 
   user = db.session.get(User, user_id)
 
-  body = flask.request.get_json()
-  is_admin = body['is_admin']
+  body = request.get_json()
 
-  user.is_admin = True
+  user.is_admin = body['is_admin']
   db.session.commit()
 
   return omit(user.to_dict(), 'hashed_password')

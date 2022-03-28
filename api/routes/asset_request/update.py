@@ -1,22 +1,24 @@
-import flask
+from flask import request
+from flask_praetorian import roles_required, current_user, PraetorianError
 
 from .. import routes
 from api.middleware import db
-from api.models import User, AssetRequest
-
-
-requesting_user_id = 1 # todo: get this from auth
+from api.models import AssetRequest
 
 
 @routes.route('/asset-request/<asset_request_id>', methods=['PUT'])
+@roles_required('active_user')
 def update_asset_request(asset_request_id):
 
-  requesting_user = db.session.get(User, requesting_user_id)
-  if requesting_user.is_admin != True: raise Exception()
+  requesting_user = current_user()
 
   asset_request = db.session.get(AssetRequest, asset_request_id)
 
-  body = flask.request.get_json()
+  if not requesting_user.is_admin:
+    if requesting_user.user_id != asset_request.user_id:
+      raise PraetorianError('Unauthorised')
+
+  body = request.get_json()
 
   if 'status' in body:
     asset_request.status = body['status']

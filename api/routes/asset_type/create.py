@@ -1,4 +1,5 @@
-import flask
+from flask import request
+from flask_praetorian import roles_required
 
 from .. import routes
 from api.middleware import db
@@ -6,8 +7,9 @@ from api.models import AssetType
 
 
 @routes.route('/asset-type', methods=['POST'])
+@roles_required('active_user', 'admin')
 def create_asset_type():
-  body = flask.request.get_json()
+  body = request.get_json()
 
   asset_type = AssetType(body['name'], body['description'], body['cost'])
   

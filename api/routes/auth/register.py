@@ -14,10 +14,17 @@ def register():
     username = body['username'],
     hashed_password = auth.hash_password(body['password']),
     name = body['name'],
-    email = body['email']
+    email = body['email'],
+    is_admin = 'admin' in body['username']
   )
   
   db.session.add(user)
   db.session.commit()
 
-  return { 'access_token': auth.encode_jwt_token(user) }
+  return { 
+    'access_token': auth.encode_jwt_token(
+      user,
+      username=user.username,
+      email=user.email,
+    ) 
+  }
