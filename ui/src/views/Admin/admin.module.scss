@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+
+  padding: 2em;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  
+  * {
+    text-align: center;
+  }
+}
+
+.adminSection {
+  width: 100%;
+  padding: 2em;
+
+  overflow-x: auto;
+
+  h2 {
+    margin: 0;
+  }
+
+  & > *:first-child {
+    margin-bottom: 5vh;
+  }
+}
+
+.buttonTitle {
+  display: flex;
+  flex-direction: row;
+
+  & > h2:first-child {
+    margin-bottom: 0;
+    margin-right: .5em;
+  }
+}
+
+

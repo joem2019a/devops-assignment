@@ -1,2 +1,4 @@
-*.sqlite
+node_modules
 __pycache__
+*.sqlite
+.DS_Store

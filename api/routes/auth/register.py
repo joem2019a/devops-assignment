@@ -6,7 +6,7 @@ from api.middleware import db, auth
 from api.models import User
 
 
-@routes.route('/auth/register', methods=['POST'])
+@routes.route('/api/auth/register', methods=['POST'])
 def register():
   body = request.get_json()
 
@@ -18,6 +18,8 @@ def register():
     is_admin = 'admin' in body['username']
   )
   
+  assert db.session.query(User).where(User.username == body['username']).first() == None
+
   db.session.add(user)
   db.session.commit()
 
@@ -26,5 +28,7 @@ def register():
       user,
       username=user.username,
       email=user.email,
+      name=user.name,
+      isAdmin=user.is_admin,
     ) 
   }

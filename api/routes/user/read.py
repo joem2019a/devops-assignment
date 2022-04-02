@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import User
 
 
-@routes.route('/user/<user_id>', methods=['GET'])
+@routes.route('/api/user/<user_id>', methods=['GET'])
 @roles_required('active_user')
 def read_user_by_id(user_id):
   requesting_user = current_user()
@@ -21,7 +21,7 @@ def read_user_by_id(user_id):
   return omit(user.to_dict(), 'hashed_password')
 
 
-@routes.route('/user', methods=['GET'])
+@routes.route('/api/user', methods=['GET'])
 @roles_required('active_user')
 def read_user():
   user = current_user()
@@ -29,7 +29,7 @@ def read_user():
   return omit(user.to_dict(), 'hashed_password')
 
 
-@routes.route('/users', methods=['GET'])
+@routes.route('/api/users', methods=['GET'])
 @roles_required('active_user', 'admin')
 def read_users():
   users = db.session.query(User).all()

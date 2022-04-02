@@ -6,7 +6,7 @@ from api.middleware import db
 from api.models import AssetType
 
 
-@routes.route('/asset-type', methods=['POST'])
+@routes.route('/api/asset-type', methods=['POST'])
 @roles_required('active_user', 'admin')
 def create_asset_type():
   body = request.get_json()

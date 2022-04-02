@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import AssetRequest
 
 
-@routes.route('/asset-requests', methods=['GET'])
+@routes.route('/api/asset-requests', methods=['GET'])
 @roles_required('active_user')
 def read_asset_requests():
   requesting_user = current_user()
@@ -29,7 +29,7 @@ def read_asset_requests():
   ))
 
 
-@routes.route('/asset-request/<asset_request_id>', methods=['GET'])
+@routes.route('/api/asset-request/<asset_request_id>', methods=['GET'])
 @roles_required('active_user')
 def read_asset_request(asset_request_id):
   requesting_user = current_user()

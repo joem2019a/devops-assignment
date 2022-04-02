@@ -5,13 +5,13 @@ from .. import routes
 from api.middleware import auth
 
 
-@routes.route('/auth/login', methods=['POST'])
+@routes.route('/api/auth/login', methods=['POST'])
 def login():
   body = request.get_json()
 
   user = auth.authenticate(body['username'], body['password'])
 
-  if not user.is_active:
+  if not user.is_enabled:
     raise PraetorianError('Unauthorised.')
 
   return {
@@ -19,5 +19,7 @@ def login():
       user,
       username=user.username,
       email=user.email,
+      name=user.name,
+      isAdmin=user.is_admin,
     )
   }

@@ -14,7 +14,7 @@ class AssetType(*Base):
   asset_type_id = Column('asset_type_id', Integer, primary_key=True)
   name = Column('name', String(255), nullable=False)
   description = Column('description', String(1000), nullable=False)
-  cost = Column('cost', Integer, nullable=False) # will be stored in pennies
+  cost = Column('cost', Integer, nullable=False) # will be stored in pennies, hence integer
 
   assets = relationship('Asset', back_populates='asset_type')
   asset_requests = relationship('AssetRequest', back_populates='asset_type')

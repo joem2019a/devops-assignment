@@ -6,7 +6,7 @@ from api.middleware import auth
 from api.utils import jti_blacklist
 
 
-@routes.route('/auth/logout', methods=['POST'])
+@routes.route('/api/auth/logout', methods=['POST'])
 @auth_required
 def logout():
   body = request.get_json(force=True)

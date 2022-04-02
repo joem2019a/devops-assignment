@@ -5,7 +5,7 @@ from api.middleware import db
 from api.models import Asset
 
 
-@routes.route('/asset/<asset_id>', methods=['DELETE'])
+@routes.route('/api/asset/<asset_id>', methods=['DELETE'])
 @roles_required('active_user', 'admin')
 def delete_asset(asset_id):
   asset = db.session.get(Asset, asset_id)

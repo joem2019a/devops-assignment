@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import User
 
 
-@routes.route('/user/<user_id>/admin', methods=['POST'])
+@routes.route('/api/user/<user_id>/admin', methods=['POST'])
 @roles_required('active_user', 'admin')
 def change_user_admin_status(user_id):
 

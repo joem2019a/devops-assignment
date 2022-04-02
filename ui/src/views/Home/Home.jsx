@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
+import { useAuth } from '../../services/authentication';
 import Table from '../../components/Table/Table';
 import style from './home.module.scss';
 
@@ -11,14 +12,21 @@ const Home = () => {
 
   const history = useHistory();
 
+  const {
+    currentUser: {
+      name,
+      isAdmin,
+    }
+  } = useAuth();
+
   const [assets, setAssets] = useState([]);
   const [requests, setRequests] = useState([]);
 
   const getData = async () => {
     try {
       const [assetsResponse, assetRequestsResponse] = await Promise.all([
-        axios.get('http://localhost:5000/assets'), 
-        axios.get('http://localhost:5000/asset-requests')
+        axios.get('/assets'), 
+        axios.get('/asset-requests')
       ]);
       setAssets(assetsResponse.data)
       setRequests(assetRequestsResponse.data)
@@ -34,9 +42,9 @@ const Home = () => {
   return (
     <section id="home">
       <div className={style.header}>
-        <h1>IT Asset Manager</h1>
+        <h1>Welcome, {name}</h1>
         <p>View assets assigned to you and request new ones.</p>
-        <Button variant="outline-primary" onClick={() => history.push('/admin')}>Admin</Button>
+        {isAdmin && <Button variant="outline-primary" onClick={() => history.push('/admin')}>Admin</Button>}
       </div>
       <hr/>
       <div className={style.homeSection}>

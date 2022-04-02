@@ -9,7 +9,7 @@ const AppFrame = ({ children }) => {
 
   return (
     <div className={style.appFrame}>
-      {location.pathname !== '/' && <PageHeader />}
+      {!['/', '/auth'].includes(location.pathname) && <PageHeader />}
       {children}
     </div>
   );

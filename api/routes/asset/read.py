@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import Asset
 
 
-@routes.route('/assets', methods=['GET'])
+@routes.route('/api/assets', methods=['GET'])
 @roles_required('active_user')
 def read_assets():
 
@@ -29,7 +29,7 @@ def read_assets():
   ))
 
 
-@routes.route('/asset/<asset_id>', methods=['GET'])
+@routes.route('/api/asset/<asset_id>', methods=['GET'])
 @roles_required('active_user')
 def read_asset(asset_id):
   asset = db.session.get(Asset, asset_id)

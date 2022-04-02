@@ -5,7 +5,7 @@ from api.middleware import db
 from api.models import User
 
 
-@routes.route('/user/<user_id>', methods=['DELETE'])
+@routes.route('/api/user/<user_id>', methods=['DELETE'])
 @roles_required('active_user', 'admin')
 def delete_user(user_id):
   user = db.session.get(User, user_id)

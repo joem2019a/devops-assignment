@@ -6,7 +6,7 @@ from api.middleware import db
 from api.models import AssetRequest
 
 
-@routes.route('/asset-request/<asset_request_id>', methods=['PUT'])
+@routes.route('/api/asset-request/<asset_request_id>', methods=['PUT'])
 @roles_required('active_user')
 def update_asset_request(asset_request_id):
 

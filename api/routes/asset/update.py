@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import User, Asset
 
 
-@routes.route('/asset/<asset_id>', methods=['PUT'])
+@routes.route('/api/asset/<asset_id>', methods=['PUT'])
 @roles_required('active_user', 'admin')
 def change_asset_user(asset_id):
 

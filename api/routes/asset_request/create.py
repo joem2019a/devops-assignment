@@ -7,7 +7,7 @@ from api.middleware import db
 from api.models import AssetType, AssetRequest
 
 
-@routes.route('/asset-request', methods=['POST'])
+@routes.route('/api/asset-request', methods=['POST'])
 @roles_required('active_user')
 def create_asset_request():
   body = request.get_json()

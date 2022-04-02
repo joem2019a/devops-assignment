@@ -16,9 +16,11 @@ const NewRequest = () => {
     notes: undefined,
   })
 
+  console.log(form);
+
   const getAssetTypes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/asset-types');
+      const response = await axios.get('/asset-types');
       setAssetTypes(response.data);
     } catch (e) {
       console.error(e);
@@ -33,8 +35,8 @@ const NewRequest = () => {
     if (form.assetTypeId) {
 
       try {
-        const response = await axios.post(
-          'http://localhost:5000/asset-request', 
+        await axios.post(
+          '/asset-request', 
           {
             asset_type_id: form.assetTypeId,
             notes: form.notes ?? ''
@@ -67,7 +69,12 @@ const NewRequest = () => {
         <p>Selected: {assetTypes.filter(({ asset_type_id }) => asset_type_id === form.assetTypeId)[0]?.name ?? 'Please select an asset type.'}</p>
         <Form.Group className="mb-3" controlId="formNotes">
           <Form.Label>Notes</Form.Label>
-          <Form.Control type="text" placeholder="Optional: Enter notes to go with your request." />
+          <Form.Control 
+            type="text" 
+            placeholder="Optional: Enter notes to go with your request."
+            value={form.notes}
+            onChange={(e) => setForm({ ...form, notes: e.target.value })}
+          />
         </Form.Group>
         <Button variant="primary" type="submit" disabled={!form.assetTypeId}>
           Submit
