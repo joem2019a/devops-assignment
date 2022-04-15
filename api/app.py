@@ -20,14 +20,12 @@ app.config["JWT_REFRESH_LIFESPAN"] = duration(days=30)
 
 auth.init_app(app, User, is_blacklisted=jti_blacklist.is_blacklisted)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///assetmanager.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = getenv('DATABASE_URL').replace('postgres://', 'postgresql+psycopg2://')
 
 db.init_app(app)
 cors.init_app(app)
 
 app.register_blueprint(routes)
-
-print(getenv('DATABASE_URL'))
 
 with app.app_context():
   db.create_all()
