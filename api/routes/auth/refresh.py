@@ -1,7 +1,7 @@
 from flask import jsonify
 
 from .. import routes
-from api.middleware import auth
+from middleware import auth
 
 
 @routes.route('/api/auth/refresh', methods=['GET'])

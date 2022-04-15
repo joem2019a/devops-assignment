@@ -1,7 +1,7 @@
 from pydash import map_, filter_
 from sqlalchemy.orm import class_mapper
 
-from api.middleware import db
+from middleware import db
 
 
 def load_join_data(data, nested_relationships={}):

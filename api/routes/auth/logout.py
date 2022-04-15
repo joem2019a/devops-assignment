@@ -2,8 +2,8 @@ from flask import request, jsonify
 from flask_praetorian import auth_required
 
 from .. import routes
-from api.middleware import auth
-from api.utils import jti_blacklist
+from middleware import auth
+from utils import jti_blacklist
 
 
 @routes.route('/api/auth/logout', methods=['POST'])

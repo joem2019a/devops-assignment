@@ -1,8 +1,8 @@
 from flask_praetorian import roles_required
 
 from .. import routes
-from api.middleware import db
-from api.models import Asset
+from middleware import db
+from models import Asset
 
 
 @routes.route('/api/asset/<asset_id>', methods=['DELETE'])

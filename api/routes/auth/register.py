@@ -2,8 +2,8 @@ from flask import jsonify, request
 from pydash import omit
 
 from .. import routes
-from api.middleware import db, auth
-from api.models import User
+from middleware import db, auth
+from models import User
 
 
 @routes.route('/api/auth/register', methods=['POST'])

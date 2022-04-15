@@ -2,8 +2,8 @@ from flask import request
 from flask_praetorian import roles_required
 
 from .. import routes
-from api.middleware import db
-from api.models import AssetType, Asset
+from middleware import db
+from models import AssetType, Asset
 
 
 @routes.route('/api/asset', methods=['POST'])

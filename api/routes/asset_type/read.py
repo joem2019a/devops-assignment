@@ -3,8 +3,8 @@ from flask_praetorian import roles_required
 from pydash import map_
 
 from .. import routes
-from api.middleware import db
-from api.models import AssetType
+from middleware import db
+from models import AssetType
 
 
 @routes.route('/api/asset-types', methods=['GET'])

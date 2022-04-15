@@ -1,10 +1,10 @@
-from api.utils.named_tuple import create_named_tuple
+from utils.named_tuple import create_named_tuple
 
 AssetRequestStatus = create_named_tuple(
     'asset_request_status',
     
     'Initiated',
     'InProgress',
-    'Completed',
+    'Complete',
     'Rejected',
 )

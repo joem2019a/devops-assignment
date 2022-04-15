@@ -3,8 +3,8 @@ from flask_praetorian import roles_required, current_user, PraetorianError
 from pydash import omit, map_
 
 from .. import routes
-from api.middleware import db
-from api.models import User
+from middleware import db
+from models import User
 
 
 @routes.route('/api/user/<user_id>', methods=['GET'])

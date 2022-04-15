@@ -2,7 +2,7 @@ from flask import request
 from flask_praetorian import PraetorianError
 
 from .. import routes
-from api.middleware import auth
+from middleware import auth
 
 
 @routes.route('/api/auth/login', methods=['POST'])

@@ -1,10 +1,10 @@
-from flask import jsonify
+from flask import request, jsonify
 from flask_praetorian import roles_required, current_user, PraetorianError
 from pydash import map_, omit
 
 from .. import routes
-from api.middleware import db
-from api.models import Asset
+from middleware import db
+from models import Asset
 
 
 @routes.route('/api/assets', methods=['GET'])
@@ -13,8 +13,13 @@ def read_assets():
 
   requesting_user = current_user()
 
+  as_admin = request.args.get('admin', False, type=bool)
+  if as_admin == True:
+    if requesting_user.is_admin != True:
+      raise PraetorianError('Unauthorised')
+
   assets = db.session.query(Asset).all() \
-            if requesting_user.is_admin == True \
+            if as_admin == True \
             else db.session.query(Asset).where(
                 Asset.user_id == requesting_user.user_id
               ).all()

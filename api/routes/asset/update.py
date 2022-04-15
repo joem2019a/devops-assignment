@@ -3,8 +3,8 @@ from flask_praetorian import roles_required
 from pydash import omit
 
 from .. import routes
-from api.middleware import db
-from api.models import User, Asset
+from middleware import db
+from models import User, Asset
 
 
 @routes.route('/api/asset/<asset_id>', methods=['PUT'])
