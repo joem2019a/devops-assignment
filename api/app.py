@@ -22,7 +22,7 @@ auth.init_app(app, User, is_blacklisted=jti_blacklist.is_blacklisted)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = getenv(
   'DATABASE_URL',
-  'sqlite://assetmanager.sqlite'
+  'sqlite:///assetmanager.sqlite'
   ).replace('postgres://', 'postgresql+psycopg2://')
 
 db.init_app(app)
