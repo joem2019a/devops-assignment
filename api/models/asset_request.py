@@ -19,7 +19,7 @@ class AssetRequest(*Base):
   asset_type_id = Column('asset_type_id', ForeignKey('assettype.asset_type_id'), nullable=False)
   user_id = Column('user_id', ForeignKey('user.user_id'), nullable=False)
   notes = Column('notes', String(1000), nullable=False, default='')
-  status = Column('status', Enum(*AssetRequestStatus._asdict().values(), 'asset_request_status'), nullable=False, default='Initiated')
+  status = Column('status', Enum(*AssetRequestStatus._asdict().values(), name='asset_request_status'), nullable=False, default='Initiated')
 
   asset_type = relationship('AssetType', back_populates='asset_requests')
   user = relationship('User', back_populates='requests')
