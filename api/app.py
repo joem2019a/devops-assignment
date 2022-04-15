@@ -27,8 +27,6 @@ cors.init_app(app)
 
 app.register_blueprint(routes)
 
-if path.exists('assetmanager.sqlite'):
-  remove('assetmanager.sqlite')
 with app.app_context():
   db.create_all()
 

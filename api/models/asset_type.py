@@ -10,7 +10,6 @@ from . import Base
 
 class AssetType(*Base):
   __tablename__ = 'AssetType'
-  __tableargs__ = { "extend_existing": True }
 
   asset_type_id = Column('asset_type_id', Integer, primary_key=True)
   name = Column('name', String(255), nullable=False)
