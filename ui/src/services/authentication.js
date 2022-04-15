@@ -36,7 +36,11 @@ const AuthProvider = ({ children }) => {
           newToken = refreshedToken;
         }
         const jwtData = jwtDecode(token);
-        setToken(newToken);
+        setToken(newToken, {
+          SameSite: 'Strict',
+          Secure: true,
+          HttpOnly: true,
+        });
         axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
         setCurrentUser(pick(
           jwtData,
