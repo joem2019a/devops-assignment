@@ -6,3 +6,4 @@ flask-praetorian
 pendulum
 Flask-SQLAlchemy
 gunicorn
+psycopg2

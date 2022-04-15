@@ -1,5 +1,5 @@
 from flask import Flask
-from os import getenv, remove, path
+from os import getenv
 from pendulum import duration
 
 from middleware import auth, cors, db
@@ -26,6 +26,8 @@ db.init_app(app)
 cors.init_app(app)
 
 app.register_blueprint(routes)
+
+print(getenv('psycopg2'))
 
 with app.app_context():
   db.create_all()
