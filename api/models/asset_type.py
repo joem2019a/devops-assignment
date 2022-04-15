@@ -9,7 +9,7 @@ from . import Base
 
 
 class AssetType(*Base):
-  __tablename__ = 'AssetType'
+  __tablename__ = 'assettype'
 
   asset_type_id = Column('asset_type_id', Integer, primary_key=True)
   name = Column('name', String(255), nullable=False)

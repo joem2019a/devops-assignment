@@ -11,7 +11,7 @@ from . import Base
 
 
 class User(*Base):
-  __tablename__ = 'User'
+  __tablename__ = 'user'
 
   user_id = Column('user_id', Integer, primary_key=True)
   username = Column('username', String(10), nullable=False)

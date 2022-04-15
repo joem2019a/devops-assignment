@@ -9,7 +9,7 @@ from . import Base
 
 
 class Asset(*Base):
-  __tablename__ = 'Asset'
+  __tablename__ = 'asset'
 
   asset_id = Column('asset_id', Integer, primary_key=True)
   asset_type_id = Column('asset_type_id', ForeignKey('AssetType.asset_type_id'), nullable=False)

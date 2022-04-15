@@ -13,7 +13,7 @@ from .enum.asset_request_status import AssetRequestStatus
 
 
 class AssetRequest(*Base):
-  __tablename__ = 'AssetRequest'
+  __tablename__ = 'assetrequest'
 
   asset_request_id = Column('asset_request_id', Integer, primary_key=True)
   asset_type_id = Column('asset_type_id', ForeignKey('AssetType.asset_type_id'), nullable=False)
