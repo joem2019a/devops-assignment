@@ -17,10 +17,10 @@
     "react-use-cookie": "^1.4.0"
   },
   "scripts": {
-    "start": "cd ui && react-scripts start",
-    "build": "cd ui && react-scripts build",
-    "test": "cd ui && react-scripts test",
-    "eject": "cd ui && react-scripts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
