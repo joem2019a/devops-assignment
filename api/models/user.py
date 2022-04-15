@@ -12,6 +12,7 @@ from . import Base
 
 class User(*Base):
   __tablename__ = 'User'
+  __tableargs__ = { "extend_existing": True }
 
   user_id = Column('user_id', Integer, primary_key=True)
   username = Column('username', String(10), nullable=False)
