@@ -16,8 +16,6 @@ const NewRequest = () => {
     notes: undefined,
   })
 
-  console.log(form);
-
   const getAssetTypes = async () => {
     try {
       const response = await axios.get('/asset-types');
