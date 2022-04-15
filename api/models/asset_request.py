@@ -16,8 +16,8 @@ class AssetRequest(*Base):
   __tablename__ = 'assetrequest'
 
   asset_request_id = Column('asset_request_id', Integer, primary_key=True)
-  asset_type_id = Column('asset_type_id', ForeignKey('AssetType.asset_type_id'), nullable=False)
-  user_id = Column('user_id', ForeignKey('User.user_id'), nullable=False)
+  asset_type_id = Column('asset_type_id', ForeignKey('assettype.asset_type_id'), nullable=False)
+  user_id = Column('user_id', ForeignKey('user.user_id'), nullable=False)
   notes = Column('notes', String(1000), nullable=False, default='')
   status = Column('status', Enum(*AssetRequestStatus._asdict().values(), 'asset_request_status'), nullable=False, default='Initiated')
 
