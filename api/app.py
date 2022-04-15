@@ -1,5 +1,5 @@
 from flask import Flask
-from os import getenv, remove
+from os import getenv, remove, path
 from pendulum import duration
 
 from middleware import auth, cors, db
@@ -27,7 +27,8 @@ cors.init_app(app)
 
 app.register_blueprint(routes)
 
-remove('assetmanager.sqlite')
+if path.exists('assetmanager.sqlite'):
+  remove('assetmanager.sqlite')
 with app.app_context():
   db.create_all()
 
