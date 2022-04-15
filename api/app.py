@@ -27,7 +27,7 @@ cors.init_app(app)
 
 app.register_blueprint(routes)
 
-print(getenv('psycopg2'))
+print(getenv('DATABASE_URL'))
 
 with app.app_context():
   db.create_all()
