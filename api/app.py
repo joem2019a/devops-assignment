@@ -28,8 +28,7 @@ cors.init_app(app)
 app.register_blueprint(routes)
 
 with app.app_context():
-  # db.drop_all(checkfirst=True)
-  db.create_all(checkfirst=True)
+  db.create_all()
 
 if __name__ == "__main__":
   app.run('0.0.0.0', 5000, True)
