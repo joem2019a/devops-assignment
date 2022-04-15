@@ -22,3 +22,5 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+Create a user with 'admin' somewhere in the username to make a user with administrator privilages. This vulnerability is for demonstration purposes.

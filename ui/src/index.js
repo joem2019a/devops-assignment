@@ -10,7 +10,7 @@ import axios from 'axios';
 
 import App from './App';
 
-axios.defaults.baseURL = 'https://joem-devops-assignment-api.herokuapp.com/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 ReactDOM.render(
   <React.StrictMode>
